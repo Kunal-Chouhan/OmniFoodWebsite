@@ -1,0 +1,222 @@
+/* 
+1.Typography
+
+-font sizes
+400.500.600.700.
+10-12-14
+line hieght
+1.6,4.05
+default 1
+-spacing-2-4
+
+02.colors
+-primary-#e67e22
+tints:#fdf2e9, #fae5d3
+shades:
+greys " #555
+5. shadows
+6.border radius
+default 9px
+&. white space
+
+
+
+*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+ /* font-size: 10px;
+   now 1rem = 10px
+   if font sixe:62.5% 
+   that coming from this
+   10px/ 16px (default) = 0.625 = 62.5%*/
+   /* percentage of user's browser font size*/
+   font-size: 62.5%;/*if u change that 10px in division the i u choose suppose 12 px so 1 rem = 12px*/
+  /* its work when possition doesnot set on body so we set with header */
+   overflow-x: hidden;
+  }
+body{
+
+  font-family:"Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  overflow-x: hidden;
+}
+
+/*Reusable component*/
+
+.heading-primary,
+.heading-secondar,
+.heading-tertiary{
+  color: #333;
+  /* color: #45260a; */
+  letter-spacing: -0.5;
+  font-weight: 700;
+}
+
+.heading-primary{
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3rem;
+}
+.heading-secondary{
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+  color: #333;
+}
+.subheading{
+  display: inline-block;
+  font-size: 2rem;
+font-weight: 500;
+color: #cf711f;
+text-transform: uppercase;
+margin-bottom:1.6rem;
+letter-spacing: 0.75px;
+}
+.heading-tertiary{
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+.btn, .btn:link, .btn:visited{
+  display: inline-block;
+  background-color: #e67e22;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+
+  text-decoration: none;
+  /* put transition only original state no hover  */
+  transition: all 0.3s;
+
+  /*for sign up btn*/
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn--full:link, .btn--full:visited{
+  background-color: #e67e22;
+  color: #fff;
+  }
+  .btn--full:hover, .btn--full:active{
+  background-color: #cf711f;
+  color: #fff;
+}
+.btn--outline:link, .btn--outline:visited{
+  background-color: #fff;
+  color: #555;
+
+}
+.btn--outline:hover, .btn--outline:active{
+  background-color: #fdf2e9;
+  /*border: 3px solid white;*/
+  /*for border add inside the button*/
+  box-shadow: inset 0 0 0 3px #fff;
+}
+.link:link,
+.link:visited{
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.link:hover,
+.link:active{
+  color: #333;
+  border-bottom: 1px solid transparent;
+}
+.Lists{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.list-item{
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+.list-icon{
+  height: 3rem;
+  width: 3rem;
+  color: #e67e22;
+}
+
+
+*:focus{
+    /* outline: 4px dotted #e67e22;
+    outline-offset: 8px; */
+    box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+/* Heler classes */
+  .margin-right-sm{
+  margin-right: 1.6rem !important;/* the button is  reusable giving the new class and give margin from this*/
+}
+.margin-bottom-md{
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text{
+  text-align: center;
+}
+.container{
+  /*1140px*/
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid{
+  display: grid;
+  row-gap: 9.6rem;
+  column-gap: 6.4rem;
+  /* margin-bottom: 9.6rem; */
+ }
+ /* .grid:last-child{
+  margin-bottom: 0;
+ } */
+  .grid:not(:last-child){
+    margin-bottom: 9.6rem;
+  }
+.grid--2cols{
+   grid-template-columns: repeat(2,1fr);/*this for reuse just hi class of grid and use*/
+}
+.grid--3cols{
+   grid-template-columns: repeat(3,1fr);/*this for reuse just hi class of grid and use*/
+} 
+.grid--4cols{
+   grid-template-columns: repeat(4,1fr);/*this for reuse just hi class of grid and use*/
+}    
+.grid--5cols{
+   grid-template-columns: repeat(5,1fr);/*this for reuse just hi class of grid and use*/
+}      
+.grid-center-v{
+  align-items: center;
+}
+
+strong{
+  font-weight: 500;
+}
+
+
+.btn--form{
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+.btn--form:hover{
+  background-color: #fff;
+  color: #555;
+}
