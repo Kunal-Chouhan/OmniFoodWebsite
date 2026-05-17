@@ -36,10 +36,14 @@ app.use(express.json()); // Allow the server to read incoming JSON data
 
 // --- DATABASE CONNECTION ---
 const uri = process.env.MONGO_URI;
-mongoose.connect(uri)
-// This is the NEW line
-  .then(() => console.log('VERSION 5: Connected to MongoDB!'))
-  .catch(err => console.error('Database connection error:', err));
+if (uri) {
+  mongoose.connect(uri)
+  // This is the NEW line
+    .then(() => console.log('VERSION 5: Connected to MongoDB!'))
+    .catch(err => console.error('Database connection error:', err));
+} else {
+  console.warn("MONGO_URI environment variable is not set. Skipping MongoDB connection.");
+}
 
 
 // --- API ENDPOINTS ---
@@ -47,7 +51,7 @@ mongoose.connect(uri)
 /**
  * API Endpoint #1: Handle the "Sign-up-now" form submission
  */
-app.post('/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
   try {
     const { fullName, email, heardFrom } = req.body;
 
@@ -86,7 +90,7 @@ app.post('/signup', async (req, res) => {
  * API Endpoint #2: The AGGREGATION Command
  * This endpoint counts how many users signed up from each source.
  */
-app.get('/stats', async (req, res) => {
+app.get('/api/stats', async (req, res) => {
   try {
     const signupStats = await User.aggregate([
       {
