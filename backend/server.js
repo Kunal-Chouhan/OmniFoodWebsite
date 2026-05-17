@@ -1,8 +1,5 @@
 // server.js
 // Import your User model
-const User = require('./models/user.model');
-const Recipe = require('./models/recipe.model'); // <-- ADD THIS LINE
-
 
 console.log("--- SERVER IS STARTING - NEWEST VERSION ---"); // <-- ADD THIS LINE
 // ... rest of your file
@@ -12,6 +9,22 @@ const cors = require('cors');
 require('dotenv').config(); // Load variables from .env file
 
 // Import your User model
+// --- DEFINE SCHEMAS AND MODELS ---
+const UserSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  heardFrom: String
+});
+const User = mongoose.models.User || mongoose.model('User', UserSchema);
+
+const RecipeSchema = new mongoose.Schema({
+  title: String,
+  calories: Number,
+  tags: [String],
+  ingredients: [String]
+});
+const Recipe = mongoose.models.Recipe || mongoose.model('Recipe', RecipeSchema);
+
 
 // --- SETUP ---
 const app = express();
@@ -97,9 +110,6 @@ app.get('/stats', async (req, res) => {
 
 
 // --- START SERVER ---
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
 
 //new agregation
 
@@ -156,3 +166,4 @@ app.get('/api/recipes', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+module.exports = app;
