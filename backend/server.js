@@ -22,7 +22,7 @@ app.use(cors()); // Allow requests from other origins (your frontend)
 app.use(express.json()); // Allow the server to read incoming JSON data
 
 // --- DATABASE CONNECTION ---
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri)
 // This is the NEW line
   .then(() => console.log('VERSION 5: Connected to MongoDB!'))
